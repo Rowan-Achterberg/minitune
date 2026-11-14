@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data: https://archive.org https://*.archive.org; media-src file: https:; style-src 'self' 'unsafe-inline'">
+<title>MiniTune</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header id="title">
+  <span class="brand">MiniTune</span>
+  <button id="bSync" class="cap" title="同步"></button>
+  <span class="grow"></span>
+  <button id="bSet" class="cap" title="设置"></button>
+  <button id="bPin" class="cap" title="窗口置顶"></button>
+  <button id="bMini" class="cap" title="迷你模式"></button>
+  <button id="bMin" class="cap" title="最小化"></button>
+  <button id="bClose" class="cap close" title="隐藏到托盘（Ctrl+Alt+M 呼出）"></button>
+</header>
+
+<main id="main">
+  <nav id="tabs">
+    <button data-tab="local">本地</button>
+    <button data-tab="online">在线</button>
+    <button data-tab="pl">歌单</button>
+    <button data-tab="search">搜索</button>
+    <span class="grow"></span>
+    <select id="sort" title="排序">
+      <option value="surname">按姓氏</option>
+      <option value="name">按姓名</option>
+      <option value="album">按专辑</option>
+      <option value="title">按歌名</option>
+    </select>
+  </nav>
+  <div id="bar">
+    <div class="search"><span class="ic" id="icSearch"></span><input id="q" spellcheck="false" placeholder="歌名、歌手、专辑或拼音首字母"></div>
+    <button id="bAuto" class="chip" title="持续在后台搜索新的免费歌曲">持续搜索</button>
+    <button id="bAdd" class="chip">添加文件夹</button>
+    <span id="hint"></span>
+  </div>
+  <div id="pls"></div>
+  <div id="status"></div>
+  <div id="list"></div>
+</main>
+
+<footer id="player">
+  <div class="now">
+    <div id="cover"><span></span><img alt=""></div>
+    <div class="meta"><div id="pTitle">未在播放</div><div id="pArtist">选一首歌开始</div></div>
+    <button id="bPrev" class="pbtn" title="上一首"></button>
+    <button id="bPlay" class="pbtn main" title="播放 / 暂停（空格）"></button>
+    <button id="bNext" class="pbtn" title="下一首"></button>
+    <button id="bExpand" class="pbtn" title="展开"></button>
+  </div>
+  <div class="seek">
+    <span id="tCur">0:00</span>
+    <input id="prog" type="range" min="0" max="1000" value="0">
+    <span id="tDur">0:00</span>
+    <button id="bLoop" class="pbtn sm"></button>
+    <button id="bFav" class="pbtn sm" title="加入“我喜欢”"></button>
+    <input id="vol" type="range" min="0" max="100" value="80" title="音量">
+  </div>
+</footer>
+
+<div id="menu" hidden></div>
+<div id="sheet" hidden></div>
+<div id="dialog" hidden></div>
+<div id="toast" hidden></div>
+
+<script src="../lib/names.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
